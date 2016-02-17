@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Medic</string>
+    
+    <!-- Strings related to login -->
+    <string name="log_in">Log In</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="link_to_forgot_password">Forgotten Password?</string>
+    <string name="link_to_register">New? Sign Up</string>
+
+    <!-- String Related to register -->
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_text">Please Enter your Details</string>
+
+    <string name="prompt_first_name">First Name</string>
+    <string name="prompt_last_name">Last Name</string>
+    <string name="prompt_date_of_birth">Date of Birth yyyy/mm/dd</string>
+    <string name="prompt_phone_number">Phone Number</string>
+    <string name="action_sign_up">Sign Up</string>
+
+</resources>
