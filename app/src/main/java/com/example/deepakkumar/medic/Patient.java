@@ -11,9 +11,9 @@ public class Patient
 	private static int id = 0;
 	private String firstName, lastName;
 	private Date dateOfBirth;
+	private String phone_no;
 	private String email_id;
 	private String password;
-	private String phone_no;
 	private int doctor_id;
 
 	public Patient(String firstName, String lastName, int day, int month,
