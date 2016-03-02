@@ -26,5 +26,9 @@
     <string name="prompt_date_of_birth">Date of Birth yyyy/mm/dd</string>
     <string name="prompt_phone_number">Phone Number</string>
     <string name="action_sign_up">Sign Up</string>
+    <string name="title_activity_patient_entries">PatientEntries</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
 
 </resources>

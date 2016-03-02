@@ -1,6 +1,8 @@
 package com.example.deepakkumar.medic;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Deepak Kumar on 10/02/2016.
@@ -8,7 +10,7 @@ import java.util.Date;
 public class Patient
 {
 
-	private static int id = 0;
+	private int id;
 	private String firstName, lastName;
 	private Date dateOfBirth;
 	private String phone_no;
@@ -16,14 +18,30 @@ public class Patient
 	private String password;
 	private int doctor_id;
 
-	public Patient(String firstName, String lastName, int day, int month,
-			int year, String email_id, String phone_no, String password,
+	//For Object creation by client classes
+	public Patient(int id, String firstName, String lastName, int day, int
+			month, int year, String phone_no, String email_id, String password,
 			int doctor_id)
 	{
-		this.id++;
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		dateOfBirth = new Date(year, month, day);
+		this.email_id = email_id;
+		this.phone_no = phone_no;
+		this.password = password;
+		this.doctor_id = doctor_id;
+	}
+
+	//For object creation from DatabaseHandler
+	public Patient(int id, String firstName, String lastName, Date
+			dateOfBirth, String phone_no, String email_id, String password,
+			int doctor_id)
+	{
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
 		this.email_id = email_id;
 		this.phone_no = phone_no;
 		this.password = password;
@@ -45,9 +63,11 @@ public class Patient
 		return lastName;
 	}
 
-	public Date getDateOfBirth()
+	public String getDateOfBirth()
 	{
-		return dateOfBirth;
+		SimpleDateFormat dateFormat = new SimpleDateFormat(
+				"yyyy-MM-dd HH:mm:ss", Locale.UK);
+		return dateFormat.format(dateOfBirth);
 	}
 
 	public String getEmail_id()
