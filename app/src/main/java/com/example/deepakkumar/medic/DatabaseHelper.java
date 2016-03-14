@@ -78,6 +78,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
 		onCreate(db);
 	}
 
+	//TODO: Insert using PHP scripts
+
 	//Insert new row into Patients table
 	public void insertRows(Patient p)
 	{
@@ -85,7 +87,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(PATIENT_ID, p.getId());
+		values.put(PATIENT_ID, p.getId());    //ID to be inserted
+		// automatically
 		values.put(FIRST_NAME, p.getFirstName());
 		values.put(LAST_NAME, p.getLastName());
 		values.put(DATE_OF_BIRTH, p.getDateOfBirth());
@@ -107,7 +110,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(STATISTICS_ID, p.getId());
+		//values.put(STATISTICS_ID, p.getId());  //Id to be inserted
+		// automatically
 		values.put(PATIENT_ID, p.getPatient_id());
 		values.put(DATE_OF_SUBMISSION, p.getDateOfSubmission());
 		values.put(GLUCOSE_LEVEL, p.getGlucoseLevel());

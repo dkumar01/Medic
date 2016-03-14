@@ -33,7 +33,7 @@ public class Patient
 		this.doctor_id = doctor_id;
 	}
 
-	//For object creation from DatabaseHandler
+	//For object creation from DatabaseHandler difference in DATE type
 	public Patient(int id, String firstName, String lastName, Date
 			dateOfBirth, String phone_no, String email_id, String password,
 			int doctor_id)
