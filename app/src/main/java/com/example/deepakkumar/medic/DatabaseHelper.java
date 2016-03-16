@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 	private static final String TABLE_PATIENTS = "patient";
 	private static final String TABLE_PATIENT_STATISTICS = "patient_statistics";
 	// PATIENT Table Column names
-	private static final String PATIENT_ID = "id";
+	private static final String PATIENT_ID = "patient_id";
 	private static final String FIRST_NAME = "first_name";
 	private static final String LAST_NAME = "last_name";
 	private static final String DATE_OF_BIRTH = "date_of_birth";

@@ -18,9 +18,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class AllPatients extends ListActivity
 {
@@ -49,6 +48,8 @@ public class AllPatients extends ListActivity
 	private static final String TAG_PASSWORD = "password";
 	private static final String TAG_DOCTOR_ID = "doctor_id";
 
+	//Database Helper
+	DatabaseHelper db = new DatabaseHelper(this);
 
 	// patients JSONArray
 	JSONArray patients = null;
@@ -204,7 +205,12 @@ public class AllPatients extends ListActivity
 					i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(i);*/
 				}
-			} catch (JSONException e)
+			}
+			catch (JSONException e)
+			{
+				e.printStackTrace();
+			}
+			catch (java.text.ParseException e)
 			{
 				e.printStackTrace();
 			}
@@ -218,13 +224,37 @@ public class AllPatients extends ListActivity
 		protected void onPostExecute(String file_url)
 		{
 			//TODO: Call InsertPatients and execute insertPatients
-
+			pDialog.dismiss();
 
 		}
 
 		protected void insertPatients(ArrayList<ArrayList<String>> list)
+				throws java.text.ParseException
 		{
+			Patient p;
+			int i, j;
+			int size;
+			ArrayList<String> cur;
+			SimpleDateFormat dateFormat = new SimpleDateFormat(
+					"yyyy-MM-dd", Locale.UK);
+			Date date;
 
+
+
+			for(i = 0; i < list.size(); i++)
+			{
+				cur = list.get(i);
+				size = cur.size();
+
+				for(j = 0; j < size; j++)
+				{
+					date = dateFormat.parse(cur.get(3));
+					p = new Patient(Integer.parseInt(cur.get(0)), cur.get(1),
+							cur.get(2), date, cur.get(4), cur.get(5),
+							cur.get(6), Integer.parseInt(cur.get(7)));
+					db.insertRows(p);
+				}
+			}
 		}
 	}
 }

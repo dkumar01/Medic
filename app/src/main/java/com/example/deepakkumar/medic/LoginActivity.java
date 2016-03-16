@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -35,6 +36,9 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class LoginActivity extends AppCompatActivity
 		implements LoaderCallbacks<Cursor>
 {
+
+	//TODO: Delete if creating network authentication
+	DatabaseHelper helper = new DatabaseHelper(this);
 
 	/**
 	 * Id to identity READ_CONTACTS permission request.
@@ -246,7 +250,7 @@ public class LoginActivity extends AppCompatActivity
 	private boolean isPasswordValid(String password)
 	{
 		//TODO: Replace this with your own logic
-		return password.length() > 4;
+		return password.length() >= 4;
 	}
 
 	/**
@@ -378,16 +382,29 @@ public class LoginActivity extends AppCompatActivity
 		protected Boolean doInBackground(Void... params)
 		{
 			// TODO: attempt authentication against a network service.
-
+			//TODO: Change to ^
 			try
 			{
-				// Simulate network access.
-				Thread.sleep(2000);
-			} catch (InterruptedException e)
+				SQLiteDatabase db = helper.getReadableDatabase();
+
+				String selectQuery = "SELECT TOP 1 patient.email_id, "
+						+ "patient.password FROM products WHERE patient"
+						+ ".email_id = " + mEmail + " and patient.password = "
+						+ mPassword + ";";
+
+				Cursor c = db.rawQuery(selectQuery, null);
+
+				if (c == null)
+					return false;
+
+				return true;
+				//	c.moveToFirst();
+			}
+			catch (Exception e)
 			{
 				return false;
 			}
-
+/*
 			for (String credential : DUMMY_CREDENTIALS)
 			{
 				String[] pieces = credential.split(":");
@@ -399,7 +416,7 @@ public class LoginActivity extends AppCompatActivity
 			}
 
 			// TODO: register the new account here.
-			return true;
+			return true;*/
 		}
 
 		@Override
