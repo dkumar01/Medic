@@ -40,30 +40,39 @@
 
                 <EditText android:id="@+id/password" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="@string/prompt_password"
-                    android:imeActionId="@+id/login"
+                    android:imeActionId="@+id/signIn"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
                     android:maxLines="1" android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="@string/action_sign_in"
+            <Button android:id="@+id/signIn"
+                    style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                    android:text="@string/action_sign_in"
                 android:textStyle="bold" />
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textAppearance="?android:attr/textAppearanceMedium"
-                      android:text="@string/link_to_forgot_password" android:id="@+id/forgot_password"
-                      android:layout_gravity="center_horizontal"
-                      android:layout_weight="2"
-                    android:padding="20px"/>
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textAppearance="?android:attr/textAppearanceMedium"
-                      android:text="@string/link_to_register" android:id="@+id/register"
-                      android:layout_gravity="center_horizontal"
-                      android:layout_weight="2"/>
+                <Button
+                        android:id="@+id/register"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/signIn"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignRight="@+id/signIn"
+                        android:layout_marginBottom="25dp"
+                        android:text="Register" />
+            <Button
+                    android:id="@+id/forgottenPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/signIn"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignRight="@+id/signIn"
+                    android:layout_marginBottom="25dp"
+                    android:text="Forgotten Password" />
+
 
         </LinearLayout>
     </ScrollView>

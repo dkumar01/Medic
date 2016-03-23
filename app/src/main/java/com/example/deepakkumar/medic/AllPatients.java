@@ -10,8 +10,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.*;
 import org.apache.http.NameValuePair;
 
 import org.json.JSONArray;
@@ -33,20 +31,14 @@ public class AllPatients extends ListActivity
 	ArrayList<ArrayList<String>> patientList;
 
 	// url to get all patients list
-	private static String url_all_patients =
-			"http://localhost/medic/get_all_patients.php";
+	private static String url_patient_login =
+			"http://localhost/medic/get_patient_login.php";
 
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_PATIENTS = "patients";
-	private static final String TAG_PATIENT_ID = "patient_id";
-	private static final String TAG_FIRST_NAME = "first_name";
-	private static final String TAG_LAST_NAME = "last_name";
-	private static final String TAG_DATE_OF_BIRTH = "date_of_birth";
-	private static final String TAG_PHONE_NUMBER = "phone_number";
+	private static final String TAG_LOGIN = "login";
 	private static final String TAG_EMAIL_ID = "email_id";
 	private static final String TAG_PASSWORD = "password";
-	private static final String TAG_DOCTOR_ID = "doctor_id";
 
 	//Database Helper
 	DatabaseHelper db = new DatabaseHelper(this);
@@ -144,7 +136,7 @@ public class AllPatients extends ListActivity
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			// getting JSON string from URL
 			JSONObject json = jParser
-					.makeHttpRequest(url_all_patients, "GET", params);
+					.makeHttpRequest(url_patient_login, "GET", params);
 
 			// Check your log cat for JSON reponse
 			Log.d("All patients: ", json.toString());
@@ -158,40 +150,21 @@ public class AllPatients extends ListActivity
 				{
 					// patients found
 					// Getting Array of Patients
-					patients = json.getJSONArray(TAG_PATIENTS);
+					patients = json.getJSONArray(TAG_LOGIN);
 
 					// looping through All Patients
-					for (int i = 0; i < patients.length(); i++)
-					{
-						JSONObject c = patients.getJSONObject(i);
+
+						JSONObject c = patients.getJSONObject(0);
 
 						// Storing each json item in variable
-						String patient_id = c.getString(TAG_PATIENT_ID);
-						String first_name = c.getString(TAG_FIRST_NAME);
-						String last_name = c.getString(TAG_LAST_NAME);
-						String date_of_birth = c.getString(TAG_DATE_OF_BIRTH);
-						String phone_number = c.getString(TAG_PHONE_NUMBER);
 						String email_id = c.getString(TAG_EMAIL_ID);
 						String password = c.getString(TAG_PASSWORD);
-						String doctor_id = c.getString(TAG_DOCTOR_ID);
+
+						//creating new array
+						String details[] = {email_id, password};
 
 
-						// creating new ArrayList
-						ArrayList<String> list = new ArrayList<String>();
 
-						// adding each child node to inner ArrayList
-						list.add(patient_id);
-						list.add(first_name);
-						list.add(last_name);
-						list.add(date_of_birth);
-						list.add(phone_number);
-						list.add(email_id);
-						list.add(password);
-						list.add(doctor_id);
-
-						// adding HashList to ArrayList
-						patientList.add(list);
-					}
 					insertPatients(patientList);
 				}
 				else
