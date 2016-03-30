@@ -2,17 +2,19 @@ package com.example.deepakkumar.medic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class Dashboard extends AppCompatActivity
+public class Dashboard extends AppCompatActivity implements OnClickListener
 {
 
 	Button viewAllEntries;
+	Button addNewEntry;
+	int patient_id;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -21,31 +23,36 @@ public class Dashboard extends AppCompatActivity
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
-		viewAllEntries = (Button)findViewById(R.id.viewAllEntriesButton);
+		viewAllEntries = (Button) findViewById(R.id.viewAllEntriesButton);
+		addNewEntry = (Button) findViewById(R.id.addNewEntryButton);
 
+		viewAllEntries.setOnClickListener(this);
+		addNewEntry.setOnClickListener(this);
+
+		patient_id = getIntent().getExtras().getInt("patient_id");
 
 	}
 
+	public void onClick(View v)
+	{
+		// TODO Auto-generated method stub
+		switch (v.getId())
+		{
+		case R.id.addNewEntryButton:
+			//System.out.print(patient_id);
+			Intent i = new Intent(this, AddStatistics
+					.class);
+			i.putExtra("patient_id", patient_id);
+			startActivity(i);
+			break;
+		case R.id.register:
+			Intent u = new Intent(this, Register.class);
+			startActivity(u);
+			break;
 
-//	public void onClick(View v) {
-//		// TODO Auto-generated method stub
-//		switch (v.getId()) {
-//		case R.id.viewAllEntriesButton:
-//			Intent i = new Intent(Dashboard.this, AllStatisticsActivity
-//					.class);
-//			startActivity(i);
-//			break;
-//		case R.id.register:
-//			Intent u = new Intent(this, Register.class);
-//			startActivity(u);
-//			break;
-//
-//		default:
-//			break;
-//		}
-//	}
-
-
-
+		default:
+			break;
+		}
+	}
 
 }

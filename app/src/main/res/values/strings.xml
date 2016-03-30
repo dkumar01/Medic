@@ -25,6 +25,7 @@
     <string name="prompt_last_name">Last Name</string>
     <string name="prompt_date_of_birth">Date of Birth yyyy/mm/dd</string>
     <string name="prompt_phone_number">Phone Number</string>
+    <string name="prompt_doctor_id">Doctor\'s Id</string>
     <string name="action_sign_up">Sign Up</string>
     <string name="title_activity_patient_entries">PatientEntries</string>
     <string name="title_activity_dashboard">Dashboard</string>
@@ -32,5 +33,17 @@
     <string name="hello_square">Hello Square World!</string>
     <string name="title_activity_all_statistics">all_statistics</string>
     <string name="title_activity_list_item">list_item</string>
+    <string name="title_activity_add_statistics">AddStatistics</string>
+
+    <!-- Strings Realated to Add Statistics -->
+    <string name="enter_statistics">Submit New Entry</string>
+    <string name="enter_details">Please Enter Relevant Details</string>
+    <string name="prompt_glucose_level">Glucose Level</string>
+    <string name="prompt_weight">Weight (Kgs)</string>
+    <string name="prompt_cholesterol">Cholesterol Level</string>
+    <string name="prompt_comments">Comments</string>
+    <string name="action_submit">Submit</string>
+
+
 
 </resources>
