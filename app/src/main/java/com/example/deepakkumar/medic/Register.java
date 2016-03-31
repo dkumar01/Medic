@@ -44,7 +44,7 @@ public class Register extends AppCompatActivity
 	String password;
 	String doctorId;
 
-	JSONParser jsonParser = new JSONParser();
+	private JSONParser jsonParser = new JSONParser();
 
 	private ProgressDialog pDialog;
 
@@ -229,7 +229,7 @@ public class Register extends AppCompatActivity
 		}
 
 		/**
-		 * Creating product
+		 * Creating patient
 		 */
 		protected String doInBackground(String... args)
 		{

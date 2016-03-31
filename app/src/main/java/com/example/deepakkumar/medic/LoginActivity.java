@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -24,7 +23,6 @@ import java.util.List;
 public class LoginActivity extends Activity implements OnClickListener
 {
 
-	private EditText email, pass;
 	private Button mSubmit, mRegister;
 
 	// Progress Dialog
@@ -33,17 +31,13 @@ public class LoginActivity extends Activity implements OnClickListener
 	// JSON parser class
 	JSONParser jsonParser = new JSONParser();
 
-	private TextView mEmailId;
-	private TextView mPassword;
+	private EditText mEmailId;
+	private EditText mPassword;
 
 	String email_id = "";
 	String password = "";
 	int patient_id;
 
-	//localhost :
-	//testing on your device
-	//put your local ip instead,  on windows, run CMD > ipconfig
-	//or in mac's terminal type ifconfig and look for the ip under en0 or en1
 	// private static final String LOGIN_URL = "http://xxx.xxx.x.x:1234/webservice/login.php";
 
 	//testing on Emulator:
@@ -51,9 +45,9 @@ public class LoginActivity extends Activity implements OnClickListener
 			"http://10.0.2.2:80/medic/get_patient_id.php";
 
 	//JSON element ids from repsonse of php script:
-	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_MESSAGE = "message";
-	private static final String TAG_PATIENT_ID = "patient_id";
+	private final String TAG_SUCCESS = "success";
+	private final String TAG_MESSAGE = "message";
+	private final String TAG_PATIENT_ID = "patient_id";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -61,10 +55,6 @@ public class LoginActivity extends Activity implements OnClickListener
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-
-		//setup input fields
-//		email = (EditText) findViewById(R.id.email);
-//		pass = (EditText) findViewById(R.id.password);
 
 		//setup buttons
 		mSubmit = (Button) findViewById(R.id.signIn);
@@ -84,9 +74,10 @@ public class LoginActivity extends Activity implements OnClickListener
 		switch (v.getId())
 		{
 		case R.id.signIn:
-			email_id = email.getText().toString();
-			password = pass.getText().toString();
+			email_id = mEmailId.getText().toString();
+			password = mPassword.getText().toString();
 			attemptLogIn();
+			//new AttemptLogin().execute();
 			break;
 		case R.id.register:
 			Intent i = new Intent(this, Register.class);
@@ -112,7 +103,6 @@ public class LoginActivity extends Activity implements OnClickListener
 		boolean cancel = false;
 		View focusView = null;
 
-		System.out.println("testy testy"+password);
 		if (TextUtils.isEmpty(email_id))
 		{
 			mEmailId.setError("Enter Email Id");
