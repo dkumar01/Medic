@@ -183,7 +183,7 @@ public class LoginActivity extends Activity implements OnClickListener
 							.class);
 
 					/////////////////////////////////////////////////
-					i.putExtra("patient_id", patient_id);
+					i.putExtra("patient_id", "" + patient_id);
 					/////////////////////////////////////////////////
 
 					finish();

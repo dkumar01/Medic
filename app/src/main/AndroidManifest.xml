@@ -42,10 +42,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".all_statistics"
+            android:name=".AllStatistics"
             android:label="@string/title_activity_all_statistics"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+
+
         <activity
             android:name=".list_item"
             android:label="@string/title_activity_list_item"
@@ -54,6 +56,11 @@
         <activity
             android:name=".AddStatistics"
             android:label="@string/title_activity_add_statistics"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".tempACt"
+            android:label="@string/title_activity_temp_act"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>

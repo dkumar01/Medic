@@ -43,6 +43,7 @@
     <string name="prompt_cholesterol">Cholesterol Level</string>
     <string name="prompt_comments">Comments</string>
     <string name="action_submit">Submit</string>
+    <string name="title_activity_temp_act">tempACt</string>
 
 
 

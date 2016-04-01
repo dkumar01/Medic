@@ -13,7 +13,7 @@ public class Dashboard extends AppCompatActivity implements OnClickListener
 
 	Button viewAllEntries;
 	Button addNewEntry;
-	int patient_id;
+	String patient_id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -29,7 +29,7 @@ public class Dashboard extends AppCompatActivity implements OnClickListener
 		viewAllEntries.setOnClickListener(this);
 		addNewEntry.setOnClickListener(this);
 
-		patient_id = getIntent().getExtras().getInt("patient_id");
+		patient_id = getIntent().getExtras().getString("patient_id");
 
 	}
 
@@ -45,8 +45,10 @@ public class Dashboard extends AppCompatActivity implements OnClickListener
 			i.putExtra("patient_id", patient_id);
 			startActivity(i);
 			break;
-		case R.id.register:
-			Intent u = new Intent(this, Register.class);
+		case R.id.viewAllEntriesButton:
+			Intent u = new Intent(this, AllStatistics
+					.class);
+			u.putExtra("patient_id", patient_id);
 			startActivity(u);
 			break;
 

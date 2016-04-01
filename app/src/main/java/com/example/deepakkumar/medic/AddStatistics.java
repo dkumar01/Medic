@@ -67,7 +67,7 @@ public class AddStatistics extends AppCompatActivity
 		mComments = (EditText) findViewById(R.id.Comments);
 
 		//Getting Patient id from previous activity
-		patient_id += getIntent().getExtras().getInt("patient_id");
+		patient_id = getIntent().getExtras().getString("patient_id");
 
 		int year, month, day;
 		int hour, minute;

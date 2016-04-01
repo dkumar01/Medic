@@ -59,13 +59,15 @@ public class JSONParser
 				is = httpEntity.getContent();
 
 			}
-			else if (method == "GET")
+			else if(method == "GET")
 			{
 				// request method is GET
 				DefaultHttpClient httpClient = new DefaultHttpClient();
 				String paramString = URLEncodedUtils.format(params, "utf-8");
 				url += "?" + paramString;
 				HttpGet httpGet = new HttpGet(url);
+				/*HttpGet httpGet = new HttpGet("http://10.0.2"
+						+ ".2:80/medic/gwt_login.php");*/
 
 				HttpResponse httpResponse = httpClient.execute(httpGet);
 				HttpEntity httpEntity = httpResponse.getEntity();
