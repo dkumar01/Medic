@@ -80,8 +80,30 @@ public class AddStatistics extends AppCompatActivity
 		hour = c.get(Calendar.HOUR_OF_DAY);
 		minute = c.get(Calendar.MINUTE);
 
-		dateOfSubmission += year + "/" + month + "/" + day + " " + hour + ":" +
-				minute;
+		dateOfSubmission += year;
+		if(month < 10)
+			dateOfSubmission += "/0" + month;
+		else
+			dateOfSubmission += "/" + month;
+
+		if(day < 10)
+			dateOfSubmission += "/0" + day + " ";
+		else
+			dateOfSubmission += "/" + day + " ";
+
+		if(hour < 10)
+			dateOfSubmission += "0" + hour + ":";
+		else
+			dateOfSubmission += hour + ":";
+
+		if(minute < 10)
+			dateOfSubmission += "0" + minute;
+		else
+			dateOfSubmission += minute;
+
+
+
+
 
 		System.out.println(url_create_patient_statistics);
 //		actionBar = getActionBar();
