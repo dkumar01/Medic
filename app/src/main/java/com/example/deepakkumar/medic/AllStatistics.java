@@ -141,7 +141,7 @@ public class AllStatistics extends ListActivity
 		}
 
 		/**
-		 * getting All products from url
+		 * getting All statistics from url
 		 * */
 		protected String doInBackground(String... args) {
 			// Building Parameters
@@ -151,7 +151,7 @@ public class AllStatistics extends ListActivity
 			JSONObject json = jsonParser.makeHttpRequest(url_all_statistics,
 					"GET", params);
 
-			// Check your log cat for JSON reponse
+			// Check log for JSON reponse
 			Log.d("All Statistics ", json.toString());
 
 			try {
@@ -159,11 +159,11 @@ public class AllStatistics extends ListActivity
 				int success = json.getInt(TAG_SUCCESS);
 
 				if (success == 1) {
-					// products found
-					// Getting Array of Products
+					
+					// Getting Array of Statistics
 					statistics = json.getJSONArray(TAG_STATISTICS);
 
-					// looping through All Products
+					// looping through All Statistics
 					for (int i = 0; i < statistics.length(); i++) {
 						JSONObject c = statistics.getJSONObject(i);
 
@@ -191,7 +191,7 @@ public class AllStatistics extends ListActivity
 						map.put(TAG_COMMENTS, "Comments: " + comments);
 
 
-						// adding HashList to ArrayList
+						// adding HashMap to ArrayList
 						statisticsList.add(map);
 					}
 				} /*else {
