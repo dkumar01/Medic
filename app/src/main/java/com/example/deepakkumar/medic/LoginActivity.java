@@ -38,7 +38,6 @@ public class LoginActivity extends Activity implements OnClickListener
 	String password = "";
 	int patient_id;
 
-	// private static final String LOGIN_URL = "http://xxx.xxx.x.x:1234/webservice/login.php";
 
 	//testing on Emulator:
 	private static final String LOGIN_URL =
@@ -166,7 +165,7 @@ public class LoginActivity extends Activity implements OnClickListener
 						"POST", params);
 
 				// check your log for json response
-				Log.d("Login attempt", json.toString());
+				//Log.d("Login attempt", json.toString());
 
 				// json success tag
 				success = json.getInt(TAG_SUCCESS);
@@ -211,7 +210,7 @@ public class LoginActivity extends Activity implements OnClickListener
 		 **/
 		protected void onPostExecute(String file_url)
 		{
-			// dismiss the dialog once product deleted
+			// dismiss the dialog once login has been processed
 			pDialog.dismiss();
 			if (file_url != null)
 			{
